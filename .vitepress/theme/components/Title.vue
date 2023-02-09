@@ -8,10 +8,13 @@
         <div>
           <button @click="handleScale(0.1)">放大</button>
           <button @click="handleScale(-0.1)">缩小</button>
+          <button @click="handleScale(-0.1)">旋转</button>
           <span>{{ parseInt((scale * 100).toString()) }} %</span>
         </div>
-        <button class="close" @click="close">×</button>
+        
+        <button class="close" @click="close">关闭</button>
       </div>
+      <div class="mask" @click="close"></div>
       <img :src="imgSrc" alt="" :style="{ transform: `scale(${scale})` }" ref="imgRef">
     </div>
   </div>
@@ -31,7 +34,6 @@ const imgRef = ref<HTMLImageElement>()
 
 
 onMounted(() => {
-
   const wrap = document.querySelector('.content-container')
   imgRef.value?.addEventListener('mousewheel', (e:any) => {
     if (e.deltaY < 0) {
@@ -102,14 +104,21 @@ const publishDate = dayjs().to(dayjs(frontmatter.date || Date.now()));
   padding-bottom: 1em;
   border-bottom: 1px dashed #c7c7c7;
 }
-
+.mask{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+  position: absolute;
+  z-index: 10;
+}
 .image-modal {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, .3);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -122,7 +131,8 @@ const publishDate = dayjs().to(dayjs(frontmatter.date || Date.now()));
   max-width: 100vw;
   transform: scale(1);
   transition: transform .3s;
-
+  z-index: 15;
+  position: relative;
 }
 
 .handle-box {
@@ -135,6 +145,7 @@ const publishDate = dayjs().to(dayjs(frontmatter.date || Date.now()));
   padding: 20px;
   justify-content: space-between;
   font-size: 26px;
+  z-index: 20;
 }
 
 .handle-box button {

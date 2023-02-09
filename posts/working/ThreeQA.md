@@ -2,7 +2,7 @@
 title: three.js QA
 description: 文章描述
 aside: false
-date: 2023-02-07
+date: 2023-02-08
 tags:
   - javascript
 ---
@@ -155,4 +155,63 @@ const cubeMaterial = new Three.MeshBasicMaterial({
   side: Three.DoubleSide, // 是否两面渲染贴图
   aoMap: aoTexture,
 });
+```
+
+
+## 如何添加环境贴图
+1. 由6张图片组成环境贴图
+
+我们可以把一个场景想象成一个立方体，然后给立方体的每一面贴上一张图，我们置身于这个盒子之中
+
+![](https://s2.loli.net/2023/02/09/l32ig49aKh8mNkG.png)
+```javascript
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+const envTexture = cubeTextureLoader.load(['img1','img2','img3','img4','img5','img6']);
+scene.background = envTexture;
+```
+![](https://s2.loli.net/2023/02/09/Uzbx6KNi9hELaBj.gif)
+
+2. 使用一张图当环境贴图 ，类似于下面这张图
+
+![](https://s2.loli.net/2023/02/09/9Qzs5BtESFfpZhO.jpg)
+
+```js
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+
+const rgbLoader = new RGBELoader();
+rgbLoader.loadAsync('hdrImgSrc').then((e) => {
+  e.mapping = THREE.EquirectangularReflectionMapping;
+  scene.background = e;
+  scene.environment = e;
+});
+```
+
+## 如何开启阴影
+
+![](https://s2.loli.net/2023/02/09/KX4BJzRoAbUnkC6.png)
+
+
+```js
+const { scene, renderer, directionalLight } = ref.current;
+// 添加一个球
+const sphereGeometry = new three.SphereGeometry(1, 20, 20);
+const material = new three.MeshStandardMaterial({
+  metalness: 0.5,
+  roughness: 0,
+});
+const sphere = new three.Mesh(sphereGeometry, material);
+scene.add(sphere);
+// 添加一个地面
+const planeGeometry = new three.PlaneGeometry(10, 10);
+const plane = new three.Mesh(planeGeometry, material);
+plane.position.set(0, -3, 0);
+// 将其设置到球的下方用于展示阴影
+plane.rotation.x = -Math.PI / 2;
+scene.add(plane);
+
+// todo 开启阴影
+renderer.shadowMap.enabled = true; // 渲染器阴影效果打开
+directionalLight.castShadow = true; // 直射光打开阴影效果
+sphere.castShadow = true; // 球可以产生阴影
+plane.receiveShadow = true; // 地面可以接受阴影
 ```

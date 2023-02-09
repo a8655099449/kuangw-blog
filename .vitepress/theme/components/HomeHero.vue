@@ -23,6 +23,7 @@ onMounted(() => {
     renderer: "svg",
     loop: true,
     path: "https://labs.nearpod.com/bodymovin/demo/markus/isometric/markus2.json",
+    // path: "https://assets5.lottiefiles.com/packages/lf20_nfoB9wNpDK.json",
   });
 });
 </script>
