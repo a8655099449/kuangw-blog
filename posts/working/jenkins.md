@@ -16,6 +16,7 @@ jenkins 是一种持续集成技术，免去了部署步骤，让部署变得非
 
 - [jenkins中文文档](https://www.jenkins.io/zh/doc/)
 - [2022Jenkins部署教程](https://juejin.cn/post/7048582881576222734)
+- [从零开始搭建JENKINS+GITHUB持续集成环境【多图】](https://juejin.cn/post/6844903992833605640#heading-8)
 
 ## 在服务器上安装 jenkins
 
@@ -74,3 +75,37 @@ systemctl enable jenkins
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
+![](https://s2.loli.net/2023/02/17/5luYzGvAdkiZULW.png)
+
+
+输入密码后，会有一个初始化的过程，然后就会进入一个安装插件的界面，这个可以选择推荐的，也可以不装
+
+然后就是这个界面
+
+![](https://s2.loli.net/2023/02/17/jiaeAZRF3MHCVvW.png)
+
+创建完账号后，进入这个页面
+
+![](https://s2.loli.net/2023/02/17/JP32GC8tuTEmoah.png)
+
+## 创建项目
+
+1. 点击`new Item`
+
+![](https://s2.loli.net/2023/02/17/H4qXjuyTs7IW8CK.png)
+
+2. 输入项目名字
+![](https://s2.loli.net/2023/02/17/XrxLfvPtdbklz5a.png)
+
+接下来进入配置页面
+
+
+第一个`general`选项描述可以随便写
+![](https://s2.loli.net/2023/02/17/uwXFG6egcBQs42E.png)
+
+## 配置git 仓库
+
+![](https://s2.loli.net/2023/02/17/k2B4HLbglmpn9YT.png)
+
+**添加权限验证**
+![](https://s2.loli.net/2023/02/17/QmPXSpW8jrMil6n.png)
