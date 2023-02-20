@@ -739,3 +739,17 @@ export const isJSON = (s: string) => {
   }
 };
 ```
+
+
+## 在ts中，导入其他类型文件保存如何解决？
+
+
+在某个`.d.ts`的文件中声明
+
+```ts
+declare module '*.hdr' {
+  const src: string;
+  export default src;
+}
+```
+
