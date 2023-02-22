@@ -33,3 +33,10 @@
   margin-top: 0;
   border-top: none;
 }
+.vp-doc.vp-doc :not(pre) > code{
+  color:red;
+  background-color: rgba(255,0,0,.03);
+}
+.vp-doc a{
+  text-decoration: underline;
+}

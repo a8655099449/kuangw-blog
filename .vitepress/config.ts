@@ -20,6 +20,7 @@ async function config() {
         {
           name: "author",
           content: "kuangw",
+          
         },
       ],
       [
