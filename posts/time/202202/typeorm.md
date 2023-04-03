@@ -10,9 +10,6 @@ tags:
 
 typeorm 是一个成熟的 nodejs `orm` 库 。 本文将介绍它的基本使用。
 
-
-
-
 ## 如何定义一个数据实体
 
 > `数据实体` 可以理解为数据库中的一张表
@@ -209,7 +206,3 @@ export class User  {
 ```sh
 pnpm i -D sqlite3@5.0.0
 ```
-
-<img src="http://localhost:6669/uploads/4680f6a46413e4316fe10a900" />
-
-![](http://localhost:6669/uploads/4680f6a46413e4316fe10a900)
