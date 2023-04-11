@@ -1,10 +1,10 @@
 @import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/style.min.css");
 :root {
-  --vp-c-brand: #a27b5c;
-  --vp-c-brand-light: #a27b5c;
-  --vp-c-brand-dark: #a27b5c;
+  --vp-c-brand: #149faa;
+  --vp-c-brand-light: #149faa;
+  --vp-c-brand-dark: #149faa;
   --vp-c-hover: #212121;
-  --vp-c-bg: #faf6f1;
+  --vp-c-bg: #fff;
   --vp-c-bg-alpha-with-backdrop: rgba(250, 246, 241, 0.7);
 
   --vp-font-family-base: "LXGW WenKai Lite", "Inter var experimental",

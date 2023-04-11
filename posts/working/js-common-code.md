@@ -2,6 +2,7 @@
 title: 日常开发中常使用的js片段
 description: 文章描述
 aside: false
+recommend: true
 date: 2023-02-07
 tags:
 	- javascript

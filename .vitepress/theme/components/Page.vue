@@ -1,7 +1,7 @@
 <template>
   <ShareCard />
-  <Tags/>
-  <h2 class="last-text">最近5篇</h2>
+  <Tags />
+  <h2 class="last-text">推荐阅读</h2>
   <div class="blogList">
     <a class="blog" v-for="item in posts" :href="withBase(item.regularPath)">
       <div class="title">{{ item.frontMatter.title }}</div>
@@ -55,6 +55,11 @@ let allMap = {};
 for (let i = 0; i < pagesNum; i++) {
   allMap[i] = [];
 }
+
+const recommendDoc = postsAll.filter(item => item.frontMatter.recommend)
+
+console.log('👴2023-04-06 17:34:08 Page.vue line:59', recommendDoc)
+
 let index = 0;
 for (let i = 0; i < postsAll.length; i++) {
   if (allMap[index].length > pageSize - 1) {
@@ -64,12 +69,9 @@ for (let i = 0; i < postsAll.length; i++) {
 }
 // set posts
 let posts = ref([] as any[]);
-posts.value = allMap[pageCurrent.value - 1];
+posts.value = [...recommendDoc, ...allMap[pageCurrent.value - 1],];
 // click pagination
-const go = (i) => {
-  pageCurrent.value = i;
-  posts.value = allMap[pageCurrent.value - 1];
-};
+
 // timestamp transform
 const transDate = (date: string) => {
   const dateArray = date.split("-");
@@ -130,15 +132,17 @@ const transDate = (date: string) => {
 </script>
 
 <style scoped>
-.last-text{
+.last-text {
   text-align: center;
 }
+
 .blog-title {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   margin-top: 24px;
 }
+
 .blogList {
   padding: 30px 0;
   padding-bottom: 120px;
@@ -147,6 +151,7 @@ const transDate = (date: string) => {
   justify-content: center;
   align-items: center;
 }
+
 .blog {
   width: 85%;
   display: block;
@@ -159,19 +164,23 @@ const transDate = (date: string) => {
   border: 4px solid #3f4e4f;
   cursor: pointer;
 }
+
 .blog:hover {
   text-decoration: none;
   transform: translate(-2px, -2px);
   box-shadow: 10px 10px var(--vp-c-brand);
 }
+
 .title {
   color: var(--vp-c-brand-light);
   font-size: 1.2em;
   font-weight: bold;
 }
+
 .date {
   padding-bottom: 7px;
 }
+
 .pagination {
   display: flex;
   align-items: center;
@@ -182,6 +191,7 @@ const transDate = (date: string) => {
   flex-wrap: wrap;
   padding: 0 3.5rem;
 }
+
 .link {
   width: 2rem;
   height: 2rem;
@@ -195,6 +205,7 @@ const transDate = (date: string) => {
 .link:hover {
   opacity: 0.7;
 }
+
 .activeLink {
   background-color: var(--vp-c-brand);
   color: white;
