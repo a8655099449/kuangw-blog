@@ -1,6 +1,6 @@
 import { getPosts, getPostLength } from "./theme/serverUtils";
 import { buildBlogRSS } from "./theme/rss";
-
+import { fileURLToPath, URL } from "node:url";
 async function config() {
   return {
     lang: "en-US",
@@ -20,7 +20,6 @@ async function config() {
         {
           name: "author",
           content: "kuangw",
-          
         },
       ],
       [
@@ -61,14 +60,22 @@ async function config() {
           text: "📃Archives",
           link: "/archives",
         },
-      
       ],
-      socialLinks: [
-        { icon: "github", link: "https://github.com/a8655099449" },
-      ],
+      socialLinks: [{ icon: "github", link: "https://github.com/a8655099449" }],
     },
     buildEnd: buildBlogRSS,
-
+    vite: {
+      resolve: {
+        alias: [
+          {
+            find: /^.*\/VPNavBarSearch\.vue$/,
+            replacement: fileURLToPath(
+              new URL("./theme/components/Search.vue", import.meta.url)
+            ),
+          },
+        ],
+      },
+    },
   };
 }
 export default config();

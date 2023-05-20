@@ -17,6 +17,8 @@
 <script lang="ts" setup>
 import { useData } from "vitepress";
 const pageData = useData();
+console.log('👴2023-05-18 16:07:02 Category.vue line:20', pageData)
+
 const headers = pageData.page.value.headers;
 </script>
 <style scoped>
@@ -29,6 +31,7 @@ const headers = pageData.page.value.headers;
   overflow-y: auto;
   max-height: 300px;
 }
+
 .list {
   padding-left: 1.25em;
   margin: 1rem 0;
@@ -36,27 +39,31 @@ const headers = pageData.page.value.headers;
   list-style-type: none;
   box-sizing: border-box;
 }
+
 .header-h2 {
   text-indent: 2;
 }
+
 ul {
   list-style-type: none;
 }
+
 @media (min-width: 768px) {
   .category {
     max-height: 400px;
   }
 }
+
 @media (min-width: 1024px) {
   .category {
     max-height: 450px;
   }
 }
+
 @media (min-width: 1400px) {
   .category {
     position: fixed;
     right: 20px;
     max-height: 490px;
   }
-}
-</style>
+}</style>

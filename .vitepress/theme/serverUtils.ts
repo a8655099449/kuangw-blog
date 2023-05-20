@@ -2,16 +2,40 @@ import globby from "globby";
 import matter from "gray-matter";
 import fs from "fs-extra";
 
+import MarkdownIt from "markdown-it";
+var regex = /\[(.*?)\]\(.*?\)/g;
+
 export async function getPosts() {
+  const md = new MarkdownIt();
   let paths = await getPostMDFilePaths();
   let posts = await Promise.all(
     paths.map(async (item) => {
       const content = await fs.readFile(item, "utf-8");
+      let titles: any[] = [];
+      try {
+        const tokens = md.parse(content);
+        tokens.forEach(({ type, markup }, index) => {
+          // 将全部的标题提取出来
+          if (type === "heading_open") {
+            let content = tokens[index + 1]?.content;
+
+            if (typeof content === 'string') {
+              content = content.replace(regex, "$1")
+            }
+            titles.push({
+              content,
+              level: markup.length,
+            });
+          }
+        });
+      } catch (error) {}
+
       const { data } = matter(content);
       data.date = _convertDate(data.date);
       return {
         frontMatter: data,
         regularPath: `/${item.replace(".md", ".html")}`,
+        titles,
       };
     })
   );

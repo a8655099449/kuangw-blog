@@ -21,11 +21,12 @@
     "dev": "vitepress dev ",
     "build": "vitepress build ",
     "serve": "vitepress serve ",
-    "load":"npm run build && scp -o \"StrictHostKeyChecking=no\" -r ./.vitepress/dist/* root@47.107.81.99:/www/wwwroot/blog/"
+    "load": "npm run build && scp -o \"StrictHostKeyChecking=no\" -r ./.vitepress/dist/* root@47.107.81.99:/www/wwwroot/blog/"
   },
   "dependencies": {
     "dayjs": "^1.11.7",
     "gitalk": "^1.8.0",
+    "less": "^4.1.3",
     "vite": "^4.1.1",
     "vue": "^3.2.47"
   }

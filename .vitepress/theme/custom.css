@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/style.min.css");
+@import url("//at.alicdn.com/t/c/font_3604441_xbzpnu79koh.css");
 :root {
   --vp-c-brand: #149faa;
   --vp-c-brand-light: #149faa;
@@ -13,12 +14,16 @@
   --vp-font-family-mono: "LXGW WenKai Mono Lite", ui-monospace, SFMono-Regular,
     "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
+
+  --vp-search-bg-color: #f2f3f5;
 }
 .dark {
   --vp-c-bg: #2c3639;
   --vp-c-text: white;
   --vp-c-hover: #ffffff;
   --vp-c-bg-alpha-with-backdrop: rgba(44, 54, 57, 0.7);
+  --vp-search-bg-color: #343435;
+
 }
 #app {
   min-height: 100vh;
@@ -33,10 +38,10 @@
   margin-top: 0;
   border-top: none;
 }
-.vp-doc.vp-doc :not(pre) > code{
-  color:red;
-  background-color: rgba(255,0,0,.03);
+.vp-doc.vp-doc :not(pre) > code {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.03);
 }
-.vp-doc a{
+.vp-doc a {
   text-decoration: underline;
 }
