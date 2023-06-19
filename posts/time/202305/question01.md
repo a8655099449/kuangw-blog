@@ -22,3 +22,18 @@ tags:
 mobx是个非常好用的react状态管理库，在[taro](https://docs.taro.zone/docs/)中都可以进行使用.现在使用起来也变得十分简便了。在函数时组件中也能轻松使用。
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);border-radius:2px;" width="800" height="450" src="https://codesandbox.io/p/sandbox/nervous-yalow-em4g4z?embed=1" allowfullscreen></iframe>
+
+## git撤销上次提交，但保留本地更改
+
+```sh
+git reset HEAD~
+```
+
+
+## git 使用远程分支强制覆盖本地分支
+$$
+```
+git fetch --all
+git reset --hard origin/<branch-name>
+
+```
