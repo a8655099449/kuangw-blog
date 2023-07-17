@@ -31,9 +31,37 @@ git reset HEAD~
 
 
 ## git 使用远程分支强制覆盖本地分支
-$$
 ```
 git fetch --all
 git reset --hard origin/<branch-name>
-
 ```
+
+## 在浏览器中如何去控制打印的样式
+
+可以使用两种方式控制，分别是`css` 和 `js`
+
+```css
+@media print {
+  h1 {
+    color: red;
+    font-size: 24px;
+  }
+
+  p {
+    display: none;
+  }
+}
+```
+
+
+```js
+function printPage() {
+  // 在打印之前执行的操作
+  document.querySelector('p').style.display = 'block';
+  window.print();
+  // 在打印之后执行的操作
+  document.querySelector('p').style.display = 'none';
+}
+```
+
+
