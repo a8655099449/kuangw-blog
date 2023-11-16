@@ -13,7 +13,7 @@ tags:
 ## 定向转发，比如讲 `/a` 转发到 `baidu.com/a`
 
 
-```conf
+```conf$$
 location /a {
     proxy_pass http://baidu.com/a;
 }
