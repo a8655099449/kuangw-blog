@@ -18,7 +18,7 @@ tags:
 server {
     # 其他 server 配置...
     location / {
-        add_header Content-Security-Policy "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;";
+        add_header Content-Security-Policy "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:; font-src * data:;";
         # 其他配置...
     }
 }
